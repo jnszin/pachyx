@@ -3,6 +3,7 @@
   background: var(--accent);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  overflow: hidden;
 }
 
 .container {
@@ -10,9 +11,16 @@
   margin: 0 auto;
 }
 
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+  gap: 2rem;
+}
+
 .header {
   max-width: 800px;
-  margin-bottom: 4rem;
 }
 
 .title {
@@ -25,7 +33,7 @@
 }
 
 .highlight {
-  color: #ff4444; /* A subtle red to indicate pain/loss, or could be kept white/grey. Let's use a premium dark red/orange or just white. Actually, Vercel often uses just white or subtle gradients. Let's use a subtle grey gradient */
+  color: #ff4444; 
   background: linear-gradient(180deg, #fff, #555);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -38,16 +46,96 @@
   line-height: 1.6;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.carouselWrapper {
+  position: relative;
+}
+
+.desktopLeft, .desktopRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  background: #111;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.desktopLeft {
+  left: -20px;
+}
+
+.desktopRight {
+  right: -20px;
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #111;
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.controlButton:hover:not(:disabled) {
+  background: #222;
+  border-color: #444;
+}
+
+.controlButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.carousel {
+  display: flex;
   gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  padding-bottom: 2rem; /* space for potential scrollbar / box shadow */
+  margin-bottom: -2rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
 }
 
 .card {
-  padding: 0;
+  flex: 0 0 calc(33.333% - 1.33rem); /* 3 items visible on desktop */
+  scroll-snap-align: start;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #333;
+}
+
+.solutionCard {
+  background: linear-gradient(145deg, #161616, #0a0a0a);
+  border-color: #333;
+}
+
+.solutionCard .iconWrapper {
+  background: linear-gradient(135deg, #fff, #aaa);
+  color: #000;
+  border: none;
 }
 
 .iconWrapper {
@@ -75,4 +163,167 @@
   font-size: 0.9375rem;
   color: #888;
   line-height: 1.6;
+}
+
+.knowMore {
+  display: block;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0070f3; /* Vercel Blue */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.card:hover .knowMore {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modalContent {
+  position: relative;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 3rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  color: #fff;
+}
+
+.modalIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: #111;
+  border: 1px solid var(--border);
+}
+
+.solutionModalIcon {
+  background: linear-gradient(135deg, #fff, #aaa);
+  color: #000;
+  border: none;
+}
+
+.modalTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.modalDescription {
+  font-size: 1.125rem;
+  color: #a0a0a0;
+  margin-bottom: 1.5rem;
+}
+
+.modalDivider {
+  height: 1px;
+  width: 100%;
+  background: var(--border);
+  margin: 1.5rem 0;
+}
+
+.modalDetails {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.modalCta {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modalCta:hover {
+  background: #eaeaea;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    flex: 0 0 calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .headerContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card {
+    flex: 0 0 85%;
+  }
 }

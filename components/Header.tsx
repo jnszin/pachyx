@@ -10,6 +10,9 @@ export default function Header() {
           Pachyx<span className={styles.dot}>.</span>
         </Link>
         <nav className={styles.nav}>
+          <Link href="/precos" className={styles.navLink}>
+            Preços
+          </Link>
           <Link href="/sobre" className={styles.navLink}>
             Quem Somos
           </Link>

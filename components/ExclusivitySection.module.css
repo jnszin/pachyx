@@ -93,6 +93,7 @@
 .visualContent {
   position: relative;
   width: 100%;
+  min-width: 0;
 }
 
 .codeWindow {
@@ -105,41 +106,7 @@
   z-index: 2;
 }
 
-.windowHeader {
-  display: flex;
-  gap: 6px;
-  padding: 12px 16px;
-  background: #111;
-  border-bottom: 1px solid var(--border);
-}
 
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #333;
-}
-
-.dot:nth-child(1) { background: #ff5f56; }
-.dot:nth-child(2) { background: #ffbd2e; }
-.dot:nth-child(3) { background: #27c93f; }
-
-.codeContent {
-  padding: 2rem;
-  overflow-x: auto;
-}
-
-.codeContent pre {
-  margin: 0;
-  font-family: var(--font-mono), monospace;
-  font-size: 0.875rem;
-  line-height: 1.7;
-  color: #ededed;
-}
-
-.codeComment { color: #666; }
-.codeKeyword { color: #ff7b72; }
-.codeFunction { color: #d2a8ff; }
 
 .glow {
   position: absolute;

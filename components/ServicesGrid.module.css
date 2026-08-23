@@ -36,6 +36,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .card::before {
@@ -86,4 +87,141 @@
   font-size: 0.9375rem;
   color: #888;
   line-height: 1.6;
+}
+
+.knowMore {
+  display: block;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0070f3; /* Vercel Blue */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.card:hover .knowMore {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modalContent {
+  position: relative;
+  background: #0a0a0a;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 3rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.closeButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  color: #fff;
+}
+
+.modalIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background: #111;
+  border: 1px solid var(--border);
+}
+
+.modalTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.modalDescription {
+  font-size: 1.125rem;
+  color: #a0a0a0;
+  margin-bottom: 1.5rem;
+}
+
+.modalDivider {
+  height: 1px;
+  background: var(--border);
+  margin: 1.5rem 0;
+}
+
+.modalDetails {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.modalCta {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modalCta:hover {
+  background: #eaeaea;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
