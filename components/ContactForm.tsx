@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react';
 import { submitContact } from '@/app/actions/contact';
 
@@ -38,9 +39,9 @@ export default function ContactForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="nome-inline" className="block text-sm font-medium text-gray-300 mb-2">Nome completo *</label>
-                <input 
-                  type="text" 
-                  id="nome-inline" 
+                <input
+                  type="text"
+                  id="nome-inline"
                   name="nome"
                   required
                   className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors"
@@ -50,9 +51,9 @@ export default function ContactForm() {
 
               <div>
                 <label htmlFor="email-inline" className="block text-sm font-medium text-gray-300 mb-2">E-mail corporativo *</label>
-                <input 
-                  type="email" 
-                  id="email-inline" 
+                <input
+                  type="email"
+                  id="email-inline"
                   name="email"
                   required
                   className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors"
@@ -64,9 +65,9 @@ export default function ContactForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="telefone-inline" className="block text-sm font-medium text-gray-300 mb-2">WhatsApp / Telefone *</label>
-                <input 
-                  type="tel" 
-                  id="telefone-inline" 
+                <input
+                  type="tel"
+                  id="telefone-inline"
                   name="telefone"
                   required
                   className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors"
@@ -76,8 +77,8 @@ export default function ContactForm() {
 
               <div>
                 <label htmlFor="servico-inline" className="block text-sm font-medium text-gray-300 mb-2">Qual a sua necessidade? *</label>
-                <select 
-                  id="servico-inline" 
+                <select
+                  id="servico-inline"
                   name="servico"
                   required
                   defaultValue=""
@@ -94,8 +95,8 @@ export default function ContactForm() {
 
             <div>
               <label htmlFor="detalhes-inline" className="block text-sm font-medium text-gray-300 mb-2">Detalhes do projeto (Opcional)</label>
-              <textarea 
-                id="detalhes-inline" 
+              <textarea
+                id="detalhes-inline"
                 name="detalhes"
                 rows={4}
                 className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors resize-none"
@@ -110,7 +111,7 @@ export default function ContactForm() {
             )}
 
             <div className="pt-4">
-              <button 
+              <button
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full bg-white text-black hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl flex justify-center items-center gap-2"
