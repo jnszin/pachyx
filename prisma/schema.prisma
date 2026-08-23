@@ -1,16 +1,17 @@
 generator client {
   provider = "prisma-client-js"
-    url      = env("DATABASE_URL")
 }
 
 datasource db {
   provider = "postgresql"
 }
 
-// Esta é a tabela que vai guardar os contatos
-model Lead {
+model ContactLead {
   id        String   @id @default(cuid())
   nome      String
-  email     String   @unique
-  createdAt DateTime @default(now()) // Salva a data e hora automaticamente
+  email     String
+  telefone  String
+  servico   String
+  detalhes  String?  @db.Text
+  createdAt DateTime @default(now())
 }

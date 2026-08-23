@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styles from './HeroSection.module.css';
 
 export default function HeroSection() {
@@ -16,9 +17,9 @@ export default function HeroSection() {
           </p>
 
           <div className={styles.actions}>
-            <button className={styles.ctaButton}>
+            <Link href="#contato" className={styles.ctaButton}>
               Inicie seu Projeto
-            </button>
+            </Link>
           </div>
         </div>
 

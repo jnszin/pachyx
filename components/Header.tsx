@@ -16,6 +16,15 @@ export default function Header() {
           <Link href="/sobre" className={styles.navLink}>
             Quem Somos
           </Link>
+          <Link href="/faq" className={styles.navLink}>
+            FAQ
+          </Link>
+          <Link 
+            href="#contato" 
+            className={styles.navLink}
+          >
+            Inicie seu Projeto
+          </Link>
         </nav>
       </div>
     </header>
