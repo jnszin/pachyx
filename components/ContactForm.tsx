@@ -44,7 +44,7 @@ export default function ContactForm() {
                   id="nome-inline"
                   name="nome"
                   required
-                  className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors"
+                  className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-500 transition-colors"
                   placeholder="Como podemos te chamar?"
                 />
               </div>
@@ -56,7 +56,7 @@ export default function ContactForm() {
                   id="email-inline"
                   name="email"
                   required
-                  className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors"
+                  className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-500 transition-colors"
                   placeholder="seu@email.com"
                 />
               </div>
@@ -70,7 +70,7 @@ export default function ContactForm() {
                   id="telefone-inline"
                   name="telefone"
                   required
-                  className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors"
+                  className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-500 transition-colors"
                   placeholder="(00) 00000-0000"
                 />
               </div>
@@ -82,7 +82,7 @@ export default function ContactForm() {
                   name="servico"
                   required
                   defaultValue=""
-                  className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors appearance-none"
+                  className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-500 transition-colors appearance-none"
                 >
                   <option value="" disabled>Selecione uma opção...</option>
                   <option value="landing_pages">Necessita de landing pages</option>
@@ -99,7 +99,7 @@ export default function ContactForm() {
                 id="detalhes-inline"
                 name="detalhes"
                 rows={4}
-                className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors resize-none"
+                className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-500 transition-colors resize-none"
                 placeholder="Conte-nos um pouco mais sobre o que você tem em mente..."
               ></textarea>
             </div>

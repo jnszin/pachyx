@@ -47,7 +47,7 @@ export default function SobrePage() {
                   style={{ objectFit: 'cover', opacity: 0.8 }} 
                   sizes="(max-width: 900px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] to-transparent pointer-events-none"></div>
               </div>
             </div>
           </div>

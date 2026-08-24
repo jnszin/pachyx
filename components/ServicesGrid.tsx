@@ -80,7 +80,7 @@ export default function ServicesGrid() {
               className={styles.modalCta}
               onClick={() => {
                 setSelectedService(null);
-                // Future integration: scroll to contact form
+                window.dispatchEvent(new CustomEvent('open-contact-form'));
               }}
             >
               Solicitar Orçamento

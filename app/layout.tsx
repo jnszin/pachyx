@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import Preloader from "../components/Preloader";
 import FloatingContact from "../components/FloatingContact";
+import Footer from "../components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Preloader />
         <Header />
         {children}
+        <Footer />
         <FloatingContact />
       </body>
     </html>

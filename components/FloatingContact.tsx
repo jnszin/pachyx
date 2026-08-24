@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { submitContact } from '@/app/actions/contact';
 
@@ -8,6 +8,18 @@ export default function FloatingContact() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
+
+  useEffect(() => {
+    const handleOpenForm = () => setIsOpen(true);
+    window.addEventListener('open-contact-form', handleOpenForm);
+    
+    // Also open if URL has #contato hash
+    if (window.location.hash === '#contato') {
+      setIsOpen(true);
+    }
+    
+    return () => window.removeEventListener('open-contact-form', handleOpenForm);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,7 +53,7 @@ export default function FloatingContact() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 1, type: "spring", stiffness: 260, damping: 20 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-[90] w-16 h-16 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.1)] overflow-hidden hover:scale-110 transition-transform duration-300 border border-gray-700 bg-[#0a0a0a] group flex items-center justify-center"
+        className="fixed bottom-6 right-6 z-90 w-16 h-16 rounded-full shadow-[0_0_20px_rgba(255,255,255,0.1)] overflow-hidden hover:scale-110 transition-transform duration-300 border border-gray-700 bg-[#0a0a0a] group flex items-center justify-center"
         aria-label="Abrir formulário de contato"
       >
         {/* Gradient background effect */}
@@ -73,7 +85,7 @@ export default function FloatingContact() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[99] flex items-center justify-center p-4"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-99 flex items-center justify-center p-4"
             />
             
             {/* Modal */}
@@ -82,7 +94,7 @@ export default function FloatingContact() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-[#0a0a0a] border border-gray-800 rounded-2xl shadow-2xl z-[100] overflow-hidden flex flex-col max-h-[90vh]"
+              className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-[#0a0a0a] border border-gray-800 rounded-2xl shadow-2xl z-100 overflow-hidden flex flex-col max-h-[90vh]"
             >
               {/* Header */}
               <div className="flex justify-between items-center p-6 border-b border-gray-800 bg-gray-900/30">
@@ -110,7 +122,7 @@ export default function FloatingContact() {
                       id="nome" 
                       name="nome"
                       required
-                      className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors"
+                      className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-500 transition-colors"
                       placeholder="Como podemos te chamar?"
                     />
                   </div>
@@ -122,7 +134,7 @@ export default function FloatingContact() {
                       id="email" 
                       name="email"
                       required
-                      className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors"
+                      className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-500 transition-colors"
                       placeholder="seu@email.com"
                     />
                   </div>
@@ -134,7 +146,7 @@ export default function FloatingContact() {
                       id="telefone" 
                       name="telefone"
                       required
-                      className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors"
+                      className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-500 transition-colors"
                       placeholder="(00) 00000-0000"
                     />
                   </div>
@@ -146,7 +158,7 @@ export default function FloatingContact() {
                       name="servico"
                       required
                       defaultValue=""
-                      className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors appearance-none"
+                      className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-500 transition-colors appearance-none"
                     >
                       <option value="" disabled>Selecione uma opção...</option>
                       <option value="landing_pages">Necessita de landing pages</option>
@@ -162,7 +174,7 @@ export default function FloatingContact() {
                       id="detalhes" 
                       name="detalhes"
                       rows={3}
-                      className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 transition-colors resize-none"
+                      className="w-full bg-black border border-gray-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-1 focus:ring-gray-500 transition-colors resize-none"
                       placeholder="Conte-nos um pouco mais sobre o que você tem em mente..."
                     ></textarea>
                   </div>
