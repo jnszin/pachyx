@@ -3,7 +3,8 @@ import HeroSection from '../components/HeroSection';
 import PainPointsSection from '../components/PainPointsSection';
 import ExclusivitySection from '../components/ExclusivitySection';
 import ServicesGrid from '../components/ServicesGrid';
-import ContactForm from '../components/ContactForm';
+import FAQSection from '../components/FAQSection';
+
 import FadeIn from '../components/FadeIn';
 
 export default function Home() {
@@ -27,7 +28,7 @@ export default function Home() {
         </FadeIn>
         
         <FadeIn delay={0.2}>
-          <ContactForm />
+          <FAQSection />
         </FadeIn>
       </main>
     </>

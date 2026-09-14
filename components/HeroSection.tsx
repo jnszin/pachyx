@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import styles from './HeroSection.module.css';
@@ -23,14 +25,14 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="relative w-full max-w-5xl mx-auto mt-16 sm:mt-24 flex justify-center perspective-[1200px] group cursor-pointer">
+        <div className="relative w-full max-w-5xl mx-auto mt-16 sm:mt-24 flex justify-center perspective-distant group cursor-pointer">
           {/* Subtle blue diffuse glow in the background */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100%] h-[80%] bg-blue-600/20 blur-[100px] sm:blur-[140px] rounded-[100%] pointer-events-none z-0 transition-all duration-1000 group-hover:bg-blue-500/30 group-hover:scale-110"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[80%] bg-blue-600/20 blur-[100px] sm:blur-[140px] rounded-[100%] pointer-events-none z-0 transition-all duration-1000 group-hover:bg-blue-500/30 group-hover:scale-110"></div>
 
           {/* Laptop Silhouette */}
-          <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] max-w-4xl flex flex-col items-center z-10 transition-all duration-700 ease-out group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:drop-shadow-2xl">
+          <div className="relative w-full aspect-16/10 sm:aspect-video max-w-4xl flex flex-col items-center z-10 transition-all duration-700 ease-out group-hover:scale-[1.02] group-hover:-translate-y-2 group-hover:drop-shadow-2xl">
             {/* Laptop Screen */}
-            <div className="w-full h-full bg-[#0a0a0a] border-[4px] sm:border-[8px] border-gray-800 rounded-t-2xl sm:rounded-t-3xl overflow-hidden shadow-2xl relative">
+            <div className="w-full h-full bg-[#0a0a0a] border-4 sm:border-8 border-gray-800 rounded-t-2xl sm:rounded-t-3xl overflow-hidden shadow-2xl relative">
               {/* Webcam dot */}
               <div className="absolute top-1 sm:top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-gray-950 rounded-full z-50"></div>
 
@@ -76,7 +78,7 @@ export default function HeroSection() {
                        <div className="w-14 sm:w-24 h-4 sm:h-8 bg-blue-600 rounded flex items-center justify-center text-[5px] sm:text-[10px] text-white font-medium shadow-lg shadow-blue-600/20 transition-all duration-500 group-hover:bg-blue-500 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.6)] group-hover:scale-105">Ver Coleção</div>
                      </div>
                      <div className="w-1/2 flex justify-center relative">
-                        <div className="absolute inset-0 bg-blue-500/10 blur-[20px] sm:blur-[40px] rounded-full transition-all duration-700 group-hover:bg-blue-500/20 group-hover:blur-[60px]"></div>
+                        <div className="absolute inset-0 bg-blue-500/10 blur-[20px] sm:blur-2xl rounded-full transition-all duration-700 group-hover:bg-blue-500/20 group-hover:blur-[60px]"></div>
                         <svg className="w-10 h-10 sm:w-24 sm:h-24 lg:w-32 lg:h-32 text-gray-300 relative z-10 drop-shadow-2xl transition-all duration-700 group-hover:scale-110 group-hover:rotate-12 group-hover:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><circle cx="6" cy="15" r="4"/><circle cx="18" cy="15" r="4"/><path d="M14 15a2 2 0 0 0-4 0"/><path d="M2.5 13 5 7c.7-1.3 1.4-2 3-2"/><path d="M21.5 13 19 7c-.7-1.3-1.5-2-3-2"/></svg>
                      </div>
                    </div>
@@ -102,7 +104,7 @@ export default function HeroSection() {
           </div>
 
           {/* Smartphone Silhouette */}
-          <div className="absolute -bottom-8 -right-2 sm:-bottom-12 sm:-right-8 w-[28%] sm:w-[22%] min-w-[120px] max-w-[260px] aspect-[9/19] bg-[#0a0a0a] border-[4px] sm:border-[6px] border-gray-800 rounded-[2rem] sm:rounded-[2.75rem] shadow-[0_25px_50px_rgba(0,0,0,0.7)] overflow-hidden z-20 flex flex-col relative transition-all duration-700 ease-out group-hover:-translate-y-6 group-hover:-translate-x-2 group-hover:scale-[1.05] group-hover:rotate-[-2deg]">
+          <div className="absolute -bottom-8 -right-2 sm:-bottom-12 sm:-right-8 w-[28%] sm:w-[22%] min-w-30 max-w-65 aspect-9/19 bg-[#0a0a0a] border-4 sm:border-[6px] border-gray-800 rounded-4xl sm:rounded-[2.75rem] shadow-[0_25px_50px_rgba(0,0,0,0.7)] overflow-hidden z-20 flex flex-col transition-all duration-700 ease-out group-hover:-translate-y-6 group-hover:-translate-x-2 group-hover:scale-[1.05] group-hover:-rotate-2">
             {/* Dynamic Island / Notch */}
             <div className="absolute top-2 sm:top-3 left-1/2 -translate-x-1/2 w-[35%] h-4 sm:h-6 bg-black rounded-full border border-gray-800/80 z-50"></div>
             
@@ -133,7 +135,7 @@ export default function HeroSection() {
 
                   {/* Hero */}
                   <div className="px-4 pt-4 sm:pt-6 pb-2 flex flex-col items-center text-center relative">
-                     <div className="absolute inset-0 bg-blue-500/10 blur-[30px] rounded-full top-4 transition-all duration-700 group-hover:bg-blue-500/20 group-hover:blur-[40px]"></div>
+                     <div className="absolute inset-0 bg-blue-500/10 blur-[30px] rounded-full top-4 transition-all duration-700 group-hover:bg-blue-500/20 group-hover:blur-2xl"></div>
                      <h2 className="text-sm sm:text-base font-serif text-gray-100 font-bold leading-tight mb-2 relative z-10">
                        Estilo e clareza<br/>para o seu olhar.
                      </h2>

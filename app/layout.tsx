@@ -31,11 +31,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Preloader />
-        <Header />
-        {children}
-        <Footer />
-        <FloatingContact />
+          <Preloader />
+          <Header />
+          {children}
+          <Footer />
+          <FloatingContact />
       </body>
     </html>
   );

@@ -8,7 +8,6 @@ export default function FloatingContact() {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{ text: string; type: 'success' | 'error' } | null>(null);
-
   useEffect(() => {
     const handleOpenForm = () => setIsOpen(true);
     window.addEventListener('open-contact-form', handleOpenForm);
@@ -23,6 +22,7 @@ export default function FloatingContact() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     setIsSubmitting(true);
     setMessage(null);
 

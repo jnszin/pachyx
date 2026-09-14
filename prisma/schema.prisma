@@ -7,11 +7,13 @@ datasource db {
 }
 
 model ContactLead {
-  id        String   @id @default(cuid())
-  nome      String
-  email     String
-  telefone  String
-  servico   String
-  detalhes  String?  @db.Text
-  createdAt DateTime @default(now())
+  id          String   @id @default(cuid())
+  nome        String
+  email       String
+  telefone    String
+  empresa     String?
+  servico     String
+  faturamento String?
+  detalhes    String?  @db.Text
+  createdAt   DateTime @default(now())
 }

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ServicesDropdown from './ServicesDropdown';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -41,22 +42,61 @@ export default function Header() {
         </button>
 
         <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
-          <Link href="/precos" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-            Preços
-          </Link>
-          <Link href="/sobre" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-            Quem Somos
-          </Link>
-          <Link href="/faq" className={styles.navLink} onClick={() => setIsMenuOpen(false)}>
-            FAQ
-          </Link>
-          <Link 
-            href="/#contato" 
-            className={styles.navLink}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Inicie seu Projeto
-          </Link>
+                    {/* Desktop Nav Links */}
+          <div className="hidden md:flex items-center gap-8">
+            <Link 
+              href="/" 
+              className={styles.navLink} 
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link 
+              href="/sobre" 
+              className={styles.navLink} 
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Sobre
+            </Link>
+            <ServicesDropdown />
+            <Link 
+              href="/contato" 
+              className="px-5 py-2 bg-gray-900 border border-gray-800 text-white font-semibold rounded-full hover:bg-gray-800 transition-colors text-sm flex items-center justify-center"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Inicie seu Projeto
+            </Link>
+          </div>
+
+          {/* Mobile Nav Menu (Cards Style) */}
+          <div className="md:hidden flex flex-col w-full px-4 gap-2 pb-6 mt-4">
+            <Link href="/" className="bg-gray-900/60 border border-gray-800 text-white font-semibold text-lg rounded-2xl p-4 w-full text-left  transition-colors" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </Link>
+            <Link href="/sobre" className="bg-gray-900/60 border border-gray-800 text-white font-semibold text-lg rounded-2xl p-4 w-full text-left  transition-colors" onClick={() => setIsMenuOpen(false)}>
+              Sobre
+            </Link>
+            
+            {/* Serviços Card with list */}
+            <div className="bg-gray-900/60 border border-gray-800 rounded-2xl p-4 flex flex-col w-full">
+              <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Serviços</span>
+              <div className="flex flex-col gap-4 pl-1">
+                <Link href="/servicos/sistemas-erp" className="text-gray-200 font-medium text-lg " onClick={() => setIsMenuOpen(false)}>Sistemas ERP</Link>
+                <Link href="/servicos/saas-e-mvp" className="text-gray-200 font-medium text-lg " onClick={() => setIsMenuOpen(false)}>SaaS e MVP</Link>
+                <Link href="/servicos/crm-personalizado" className="text-gray-200 font-medium text-lg " onClick={() => setIsMenuOpen(false)}>CRM Personalizado</Link>
+                <Link href="/servicos/portais-web" className="text-gray-200 font-medium text-lg " onClick={() => setIsMenuOpen(false)}>Portais Web</Link>
+                <Link href="/servicos/sites-corporativos" className="text-gray-200 font-medium text-lg " onClick={() => setIsMenuOpen(false)}>Sites Corporativos</Link>
+              </div>
+            </div>
+
+            
+
+            <Link href="/contato" className="bg-white text-gray-950 font-bold text-lg rounded-2xl p-4 w-full flex items-center justify-center mt-2 mb-8  transition-colors" style={{ color: '#050505' }} onClick={() => setIsMenuOpen(false)}>
+              Iniciar um projeto
+            </Link>
+          </div>
+
+          
         </nav>
       </div>
     </header>
